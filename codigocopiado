@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description"
+          content="PHPDocker.io is a PHP development environment generator built with Docker containers"/>
+    <meta name="author" content="PHPDocker.io"/>
+    <meta name="keywords" content="PHP, Docker, development, environment, generator, phpdocker">
+
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+    <title>PHPDocker.io - Generator</title>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X8J15RKL6H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-X8J15RKL6H');
+</script>
+
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/css/base.css"/>
+    <link rel="stylesheet" href="/css/media-queries.css"/>
+    <link rel="stylesheet" href="/css/dark.css"/>
+    <link rel="stylesheet" href="/vendor/bootstrap-multiselect/dist/css/bootstrap-multiselect.css"/>
+    <link rel="stylesheet" href="/vendor/bootstrap-toggle/css/bootstrap-toggle.css"/>
+    <link rel="stylesheet" href="/vendor/jquery-ui/themes/smoothness/jquery-ui.min.css"/>
+</head>
+
+<body data-target="#menu-section">
+
+<div id="wrap">
+    <!-- Header -->
+    <section id="header" class="inner-shadow-bottom">
+        <a href="/generator">
+            <h1> PHPDocker.io </h1>
+        </a>
+        <p>A PHP development environment generator built with Docker containers.</p>
+    </section>
+    <!-- End header -->
+
+    <!-- Content -->
+    <section id="content">
+        <div class="container-fluid">
+                <form method="post" id="generator" action="/">
+        <div class="row">
+            
+        </div>
+        <div class="row">
+            <div class="group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>Global configuration</h3>
+                <div class="row">
+                                            <div class="col col-lg-4 col-md-4"
+                             id="container_for_basePort"><div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_globalOptions_basePort">Base port</label><div class="col-lg-9 col-md-9"><input type="number" id="project_globalOptions_basePort" name="project[globalOptions][basePort]" required="required" placeholder="For nginx, Mailhog control panel..." class="form-control" value="19000" /></div>
+        </div></div>
+                                            <div class="col col-lg-4 col-md-4"
+                             id="container_for_appPath"><div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_globalOptions_appPath">Your source code&#039;s path</label><div class="col-lg-9 col-md-9"><input type="text" id="project_globalOptions_appPath" name="project[globalOptions][appPath]" required="required" class="form-control" value="." /></div>
+        </div></div>
+                                            <div class="col col-lg-4 col-md-4"
+                             id="container_for_dockerWorkingDir"><div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_globalOptions_dockerWorkingDir">Containers workdir</label><div class="col-lg-9 col-md-9"><input type="text" id="project_globalOptions_dockerWorkingDir" name="project[globalOptions][dockerWorkingDir]" required="required" class="form-control" value="/application" /></div>
+        </div></div>
+                                    </div>
+                <div class="row">
+                    <div class="col col-lg-4 col-md-4">
+                        <div class="note">Initial port for services exposed from docker to your machine</div>
+                    </div>
+                    <div class="col col-lg-4 col-md-4">
+                        <div class="note">Location of your app's source code relative to docker-compose.yaml</div>
+                    </div>
+                    <div class="col col-lg-4 col-md-4">
+                        <div class="note">Working directory for all containers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="group col col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <h3>PHP configuration</h3>
+                <div class="row">
+                    <div class="col col-lg-6 col-md-6">
+                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_phpOptions_version">PHP Version</label><div class="col-lg-9 col-md-9"><select id="project_phpOptions_version" name="project[phpOptions][version]" class="form-control"><option value="8.3">8.3</option><option value="8.2">8.2</option><option value="8.1">8.1</option></select></div>
+        </div>
+                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_phpOptions_frontControllerPath">Front controller path (relative to container workdir)</label><div class="col-lg-9 col-md-9"><input type="text" id="project_phpOptions_frontControllerPath" name="project[phpOptions][frontControllerPath]" required="required" placeholder="Password for root user" class="form-control" value="public/index.php" /></div>
+        </div>
+                        <div class="form-group">
+        <div class="col-lg-3 col-md-3"></div>
+        <div class="col-lg-9 col-md-9">
+            <div class="checkbox"><label for="project_phpOptions_hasGit"><input type="checkbox" id="project_phpOptions_hasGit" name="project[phpOptions][hasGit]" value="1" /> Add git (eg for composer) - Adds 75MB</label></div>
+            
+        </div>
+    </div>
+
+                        <div class="note">
+                            <p>Please note:</p>
+                            <ul>
+                                <li>Extensions already included on base image: APC,
+                                    cURL, JSON, Sodium, MBString, OPCache, Readline, XML and Zip.
+                                </li>
+                                <li>Each PHP version supports a different set of extensions to the others.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col col-lg-6 col-md-6">
+                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label" for="project_phpOptions_phpExtensions83">Extensions (PHP 8.3)</label><div class="col-lg-9 col-md-9"><select id="project_phpOptions_phpExtensions83" name="project[phpOptions][phpExtensions83][]" class="form-control" multiple="multiple"><option value="AMQP">AMQP</option><option value="AST">AST</option><option value="Bcmath">Bcmath</option><option value="bzip2">bzip2</option><option value="CGI">CGI</option><option value="DBA">DBA</option><option value="Decimal">Decimal</option><option value="DS (Data Structures)">DS (Data Structures)</option><option value="Enchant">Enchant</option><option value="GD">GD</option><option value="Gearman">Gearman</option><option value="Gmagick (GraphicsMagick)">Gmagick (GraphicsMagick)</option><option value="GMP">GMP</option><option value="GNUPG">GNUPG</option><option value="GRPC">GRPC</option><option value="HTTP">HTTP</option><option value="igbinary">igbinary</option><option value="ImageMagick">ImageMagick</option><option value="IMAP">IMAP</option><option value="Inotify">Inotify</option><option value="Interbase">Interbase</option><option value="Intl (Internationalisation)">Intl (Internationalisation)</option><option value="LDAP">LDAP</option><option value="LZ4">LZ4</option><option value="Mailparse">Mailparse</option><option value="MaxMind DB">MaxMind DB</option><option value="mcrypt">mcrypt</option><option value="Memcache">Memcache</option><option value="Memcached">Memcached</option><option value="MongoDB">MongoDB</option><option value="MessagePack">MessagePack</option><option value="MySQL">MySQL</option><option value="OAuth">OAuth</option><option value="ODBC">ODBC</option><option value="Pcov">Pcov</option><option value="PostgreSQL">PostgreSQL</option><option value="PHPDBG">PHPDBG</option><option value="Protobuf">Protobuf</option><option value="pspell">pspell</option><option value="PSR">PSR</option><option value="raphf">raphf</option><option value="Redis">Redis</option><option value="rrd">rrd</option><option value="Samba Client">Samba Client</option><option value="SNMP">SNMP</option><option value="SOAP">SOAP</option><option value="Solr">Solr</option><option value="SQLite3">SQLite3</option><option value="ssh2">ssh2</option><option value="Swoole">Swoole</option><option value="Sybase">Sybase</option><option value="Tidy">Tidy</option><option value="UUID">UUID</option><option value="vips">vips</option><option value="Xdebug">Xdebug</option><option value="Xhprof">Xhprof</option><option value="XMLRPC">XMLRPC</option><option value="XSL">XSL</option><option value="Yac">Yac</option><option value="YAML">YAML</option><option value="ZMQ (ZeroMQ)">ZMQ (ZeroMQ)</option><option value="zstd (Zstandard)">zstd (Zstandard)</option></select></div>
+        </div>
+
+                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label" for="project_phpOptions_phpExtensions82">Extensions (PHP 8.2)</label><div class="col-lg-9 col-md-9"><select id="project_phpOptions_phpExtensions82" name="project[phpOptions][phpExtensions82][]" class="form-control" multiple="multiple"><option value="AMQP">AMQP</option><option value="AST">AST</option><option value="Bcmath">Bcmath</option><option value="bzip2">bzip2</option><option value="CGI">CGI</option><option value="DBA">DBA</option><option value="Decimal">Decimal</option><option value="DS (Data Structures)">DS (Data Structures)</option><option value="Enchant">Enchant</option><option value="GD">GD</option><option value="Gearman">Gearman</option><option value="Gmagick (GraphicsMagick)">Gmagick (GraphicsMagick)</option><option value="GMP">GMP</option><option value="GNUPG">GNUPG</option><option value="GRPC">GRPC</option><option value="HTTP">HTTP</option><option value="igbinary">igbinary</option><option value="ImageMagick">ImageMagick</option><option value="IMAP">IMAP</option><option value="Inotify">Inotify</option><option value="Interbase">Interbase</option><option value="Intl (Internationalisation)">Intl (Internationalisation)</option><option value="LDAP">LDAP</option><option value="LZ4">LZ4</option><option value="Mailparse">Mailparse</option><option value="MaxMind DB">MaxMind DB</option><option value="mcrypt">mcrypt</option><option value="Memcache">Memcache</option><option value="Memcached">Memcached</option><option value="MongoDB">MongoDB</option><option value="MessagePack">MessagePack</option><option value="MySQL">MySQL</option><option value="OAuth">OAuth</option><option value="ODBC">ODBC</option><option value="Pcov">Pcov</option><option value="PostgreSQL">PostgreSQL</option><option value="PHPDBG">PHPDBG</option><option value="Protobuf">Protobuf</option><option value="pspell">pspell</option><option value="PSR">PSR</option><option value="raphf">raphf</option><option value="Redis">Redis</option><option value="rrd">rrd</option><option value="Samba Client">Samba Client</option><option value="SNMP">SNMP</option><option value="SOAP">SOAP</option><option value="Solr">Solr</option><option value="SQLite3">SQLite3</option><option value="ssh2">ssh2</option><option value="Swoole">Swoole</option><option value="Sybase">Sybase</option><option value="Tidy">Tidy</option><option value="UUID">UUID</option><option value="vips">vips</option><option value="Xdebug">Xdebug</option><option value="Xhprof">Xhprof</option><option value="XMLRPC">XMLRPC</option><option value="XSL">XSL</option><option value="Yac">Yac</option><option value="YAML">YAML</option><option value="ZMQ (ZeroMQ)">ZMQ (ZeroMQ)</option><option value="zstd (Zstandard)">zstd (Zstandard)</option></select></div>
+        </div>
+
+                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label" for="project_phpOptions_phpExtensions81">Extensions (PHP 8.1)</label><div class="col-lg-9 col-md-9"><select id="project_phpOptions_phpExtensions81" name="project[phpOptions][phpExtensions81][]" class="form-control" multiple="multiple"><option value="AMQP">AMQP</option><option value="AST">AST</option><option value="Bcmath">Bcmath</option><option value="bzip2">bzip2</option><option value="CGI">CGI</option><option value="DBA">DBA</option><option value="Decimal">Decimal</option><option value="DS (Data Structures)">DS (Data Structures)</option><option value="Enchant">Enchant</option><option value="GD">GD</option><option value="Gearman">Gearman</option><option value="Gmagick (GraphicsMagick)">Gmagick (GraphicsMagick)</option><option value="GMP">GMP</option><option value="GNUPG">GNUPG</option><option value="GRPC">GRPC</option><option value="HTTP">HTTP</option><option value="igbinary">igbinary</option><option value="ImageMagick">ImageMagick</option><option value="IMAP">IMAP</option><option value="Inotify">Inotify</option><option value="Interbase">Interbase</option><option value="Intl (Internationalisation)">Intl (Internationalisation)</option><option value="LDAP">LDAP</option><option value="LZ4">LZ4</option><option value="Mailparse">Mailparse</option><option value="MaxMind DB">MaxMind DB</option><option value="mcrypt">mcrypt</option><option value="Memcache">Memcache</option><option value="Memcached">Memcached</option><option value="MongoDB">MongoDB</option><option value="MessagePack">MessagePack</option><option value="MySQL">MySQL</option><option value="OAuth">OAuth</option><option value="ODBC">ODBC</option><option value="Pcov">Pcov</option><option value="PostgreSQL">PostgreSQL</option><option value="PHPDBG">PHPDBG</option><option value="Protobuf">Protobuf</option><option value="pspell">pspell</option><option value="PSR">PSR</option><option value="raphf">raphf</option><option value="Redis">Redis</option><option value="rrd">rrd</option><option value="Samba Client">Samba Client</option><option value="SNMP">SNMP</option><option value="SOAP">SOAP</option><option value="Solr">Solr</option><option value="SQLite3">SQLite3</option><option value="ssh2">ssh2</option><option value="Swoole">Swoole</option><option value="Sybase">Sybase</option><option value="Tidy">Tidy</option><option value="UUID">UUID</option><option value="vips">vips</option><option value="Xdebug">Xdebug</option><option value="Xhprof">Xhprof</option><option value="XMLRPC">XMLRPC</option><option value="XSL">XSL</option><option value="Yac">Yac</option><option value="YAML">YAML</option><option value="ZMQ (ZeroMQ)">ZMQ (ZeroMQ)</option><option value="zstd (Zstandard)">zstd (Zstandard)</option></select></div>
+        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="group col col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h3>Zero-config Services</h3>
+                <p class="note">The following services take no additional configuration parameters.</p>
+
+                                                            <div class="form-group"><div class="checkbox"><label for="project_hasMemcached"><input type="checkbox" id="project_hasMemcached" name="project[hasMemcached]" value="1" /> Memcached</label></div></div>
+                                                                                <div class="form-group"><div class="checkbox"><label for="project_hasRedis"><input type="checkbox" id="project_hasRedis" name="project[hasRedis]" value="1" /> Redis</label></div></div>
+                                                                                <div class="form-group"><div class="checkbox"><label for="project_hasMailhog"><input type="checkbox" id="project_hasMailhog" name="project[hasMailhog]" value="1" /> Mailhog</label></div></div>
+                                                                                <div class="form-group"><div class="checkbox"><label for="project_hasClickhouse"><input type="checkbox" id="project_hasClickhouse" name="project[hasClickhouse]" value="1" /> Clickhouse</label></div></div>
+                                                </div>
+        </div>
+
+        <div class="row">
+            <div class="group col col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h3><div class="checkbox"><label for="project_mysqlOptions_hasMysql"><input type="checkbox" id="project_mysqlOptions_hasMysql" name="project[mysqlOptions][hasMysql]" value="1" /> MySQL</label></div></h3>
+                <div id="mysql-options" class="row">
+                                                                        <div id="container_for_mysql_version"><div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_mysqlOptions_version">Version</label><div class="col-lg-9 col-md-9"><select id="project_mysqlOptions_version" name="project[mysqlOptions][version]" class="form-control"><option value="8.0">8.0</option><option value="5.7">5.7.x</option><option value="5.6">5.6.x</option><option value="5.5">5.5.x</option></select></div>
+        </div></div>
+                                                                                                <div id="container_for_mysql_rootPassword"><div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mysqlOptions_rootPassword" name="project[mysqlOptions][rootPassword]" required="required" placeholder="Password for root user" class="form-control" /></div>
+        </div></div>
+                                                                                                <div id="container_for_mysql_databaseName"><div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mysqlOptions_databaseName" name="project[mysqlOptions][databaseName]" required="required" placeholder="Your app&#039;s database name" class="form-control" /></div>
+        </div></div>
+                                                                                                <div id="container_for_mysql_username"><div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mysqlOptions_username" name="project[mysqlOptions][username]" required="required" placeholder="Your app&#039;s database username" class="form-control" /></div>
+        </div></div>
+                                                                                                <div id="container_for_mysql_password"><div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mysqlOptions_password" name="project[mysqlOptions][password]" required="required" placeholder="Your app&#039;s database password" class="form-control" /></div>
+        </div></div>
+                                                            </div>
+            </div>
+
+            <div class="group col col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h3><div class="checkbox"><label for="project_mariadbOptions_hasMariadb"><input type="checkbox" id="project_mariadbOptions_hasMariadb" name="project[mariadbOptions][hasMariadb]" value="1" /> MariaDB</label></div></h3>
+                <div id="mariadb-options" class="row">
+                                                                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_mariadbOptions_version">Version</label><div class="col-lg-9 col-md-9"><select id="project_mariadbOptions_version" name="project[mariadbOptions][version]" class="form-control"><option value="11.0">11.0.x</option><option value="10.11">10.11.x</option><option value="10.10">10.10.x</option><option value="10.9">10.9.x</option><option value="10.8">10.8.x</option><option value="10.7">10.7.x</option><option value="10.6">10.6.x</option><option value="10.5">10.5.x</option><option value="10.4">10.4.x</option></select></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mariadbOptions_rootPassword" name="project[mariadbOptions][rootPassword]" required="required" placeholder="Password for root user" class="form-control" /></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mariadbOptions_databaseName" name="project[mariadbOptions][databaseName]" required="required" placeholder="Your app&#039;s database name" class="form-control" /></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mariadbOptions_username" name="project[mariadbOptions][username]" required="required" placeholder="Your app&#039;s database username" class="form-control" /></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_mariadbOptions_password" name="project[mariadbOptions][password]" required="required" placeholder="Your app&#039;s database password" class="form-control" /></div>
+        </div>
+                                                            </div>
+            </div>
+
+            <div class="group col col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h3><div class="checkbox"><label for="project_postgresOptions_hasPostgres"><input type="checkbox" id="project_postgresOptions_hasPostgres" name="project[postgresOptions][hasPostgres]" value="1" /> Postgres</label></div></h3>
+                <div id="postgres-options" class="row">
+                                                                        <div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_postgresOptions_version">Version</label><div class="col-lg-9 col-md-9"><select id="project_postgresOptions_version" name="project[postgresOptions][version]" class="form-control"><option value="15">15.x</option><option value="14">14.x</option><option value="13">13.x</option><option value="12">12.x</option><option value="11">11.x</option><option value="10">10.x</option><option value="9.6">9.6.x</option></select></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_postgresOptions_rootUser" name="project[postgresOptions][rootUser]" required="required" placeholder="Root username" class="form-control" /></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_postgresOptions_rootPassword" name="project[postgresOptions][rootPassword]" required="required" placeholder="Password for root user" class="form-control" /></div>
+        </div>
+                                                                                                <div class="form-group">        <div class="col-lg-3 col-md-3"></div>
+    <div class="col-lg-9 col-md-9"><input type="text" id="project_postgresOptions_databaseName" name="project[postgresOptions][databaseName]" required="required" placeholder="Your app&#039;s database name" class="form-control" /></div>
+        </div>
+                                                            </div>
+            </div>
+
+            <div class="group col col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h3><div class="checkbox"><label for="project_elasticsearchOptions_hasElasticsearch"><input type="checkbox" id="project_elasticsearchOptions_hasElasticsearch" name="project[elasticsearchOptions][hasElasticsearch]" value="1" /> Elasticsearch</label></div></h3>
+                <div id="elasticsearch-options" class="row">
+                    <div class="form-group">        <label class="col-lg-3 col-md-3 control-label required" for="project_elasticsearchOptions_version">Version</label><div class="col-lg-9 col-md-9"><select id="project_elasticsearchOptions_version" name="project[elasticsearchOptions][version]" class="form-control"><option value="6.5.4">6.5.x</option><option value="5.6">5.6.x</option></select></div>
+        </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="hidden" id="project__token" name="project[_token]" value="73bf53505e5.ykkpKpgyJuuAfYw09M4MtBEVuK9CYl3tz1_-KCc3KpY._j5QWeBia4rsOcUCrZdN-WZXzdgEFRiBpW6YfFB7cK6YOktY10UUp-Yx-w" />
+
+        <div class="row">
+            <div class="col col-lg-4 col-lg-offset-4">
+                <div class="text-center">
+                    <input type="submit" class="btn button-custom btn-custom-three shadow"
+                           value="Generate project archive">
+                </div>
+            </div>
+        </div>
+    </form>
+        </div>
+    </section>
+    <!-- End of content -->
+</div>
+
+<footer class="inner-shadow-top container-fluid">
+    <div class="row">
+        <div class="copyright col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <a href="/generator">PHPDocker.io &copy; 2024</a>
+        </div>
+        <div class="share col col-lg-6 col-md-6 col-sm-6 col-xs-12 rig">
+            <span class="github-link">
+                <a class="" href="https://github.com/phpdocker-io/phpdocker.io" target="_blank">
+                    <span class="fa fa-github"></span> Github
+                </a>
+            </span>
+        </div>
+    </div>
+</footer>
+
+<link property="stylesheet" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind"/>
+
+<script src="/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="/vendor/bootstrap-multiselect/dist/js/bootstrap-multiselect.js"></script>
+<script src="/vendor/bootstrap-toggle/js/bootstrap-toggle.js"></script>
+<script src="/js/main-form.js"></script>
+<script src="/js/tools.js"></script>
+
+</body>
+</html>
